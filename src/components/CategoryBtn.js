@@ -1,3 +1,5 @@
+
+
 export default function CategoryBtn(props) {
   const [activeCategory, name, generateStylesWithOptions] = [props.activeCategory, props.name, props.generateStylesWithOptions];
   return (

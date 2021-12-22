@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import Alpaca from './components/Alpaca';
 import CategoryBtn from './components/CategoryBtn';
+import StyleBtn from './components/StyleBtn';
 import { styleData } from './data/style';
 
 
@@ -50,20 +51,71 @@ function App() {
     });
     setStyleOptions(optionsArray);
   }
+  function generateAlpacaImg(name, img) {
+    // set to active
+    const newActiveArray = [...activeStyle];
+    newActiveArray.splice(categoryIndex, 1, name);
+    setActiveStyle(newActiveArray);
 
-  // const styleButtons = styleOptions.map((item, index) => {
+    // replaces image in the array and generates img
+    const newAlpacaImg = [...alpacaImg];
+    newAlpacaImg.splice(categoryIndex, 1, img);
+    setAlpacaImg(newAlpacaImg);
 
-  // });
+  }
+
+  function randomAlpaca() {
+    //TODO add logic
+  }
+  function downloadAlpaca() {
+    //TODO add logic
+
+  }
+  // For each style button iterate over them adding the index and item. Store in a var and return in App
+  const styleButtons = styleOptions.map((item, index) => {
+    return (<StyleBtn className='btn btn-primary' name={item.name} key={index} activeStyle={activeStyle[categoryIndex]} generateAlpacaImg={() => generateAlpacaImg(item.name, item.img, index)} />);
+  });
+  const categoryBtns = Object.keys(styleData).map((item, index) => {
+    return (
+      <CategoryBtn key={index} name={item} activeCategory={activeCategory} generateStylesWithOptions={() => generateStylesWithOptions(item, index)} />
+    );
+  });
 
   const alpacaAvatar = alpacaImg.map((item, index) => {
     return (
       <Alpaca pic={item} key={index} />
     );
   });
+
+
   return (
-    <div className="App">
+    <div className="container">
       <h1>Alpaca Generator</h1>
-      alpacaAvatar
+      <div className='container'>
+        {alpacaAvatar}
+
+      </div>
+      <div className='container-sm'>
+        <button className='button' onClick={() => randomAlpaca()}> Random</button>
+        <button className='button' onClick={() => downloadAlpaca()}>Download</button>
+      </div>
+      {/* style containter */}
+      <div>
+        <div>
+          {/* category */}
+          <h2>Alpaca Accessories</h2>
+          <div>
+            {categoryBtns}
+          </div>
+          {/* styles */}
+          <div>
+            <h2>Alpaca Styles</h2>
+            <div>
+              {styleButtons}
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
