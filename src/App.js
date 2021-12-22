@@ -5,8 +5,8 @@ import { styleData } from './data/style';
 
 
 function App() {
-  const [data, setData] = useState([]);
-  const [activeCategory, setActiveCategory] = useState("background");
+  const [imgData, setImgData] = useState([]);
+  const [activeCategory, setActiveCategory] = useState("Background");
   const [activeStyle, setActiveStyle] = useState([]);
   const [alpacaImg, setAlpacaImg] = useState([]);
   const [styleOptions, setStyleOptions] = useState([]);
@@ -25,7 +25,7 @@ function App() {
     });
     setAlpacaImg(alpacaImageArray);
     setActiveStyle(defaultStylesArray);
-    setData(styleData);
+    setImgData(styleData);
   }, []);
 
   useEffect(() => {
@@ -63,6 +63,7 @@ function App() {
   return (
     <div className="App">
       <h1>Alpaca Generator</h1>
+      alpacaAvatar
     </div>
   );
 }
