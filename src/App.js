@@ -3,10 +3,10 @@ import Alpaca from './components/Alpaca';
 import CategoryBtn from './components/CategoryBtn';
 import StyleBtn from './components/StyleBtn';
 import { styleData } from './data/style';
-
+import mergeImages from 'merge-images';
 
 function App() {
-  const [imgData, setImgData] = useState([]);
+  const [allAlpacaData, setAllAlpacaData] = useState([]);
   const [activeCategory, setActiveCategory] = useState("Background");
   const [activeStyle, setActiveStyle] = useState([]);
   const [alpacaImg, setAlpacaImg] = useState([]);
@@ -26,7 +26,7 @@ function App() {
     });
     setAlpacaImg(alpacaImageArray);
     setActiveStyle(defaultStylesArray);
-    setImgData(styleData);
+    setAllAlpacaData(styleData);
   }, []);
 
   useEffect(() => {
@@ -51,6 +51,8 @@ function App() {
     });
     setStyleOptions(optionsArray);
   }
+
+  // (method) Generates Alpaca using the name and image provided from the active
   function generateAlpacaImg(name, img) {
     // set to active
     const newActiveArray = [...activeStyle];
@@ -65,7 +67,18 @@ function App() {
   }
 
   function randomAlpaca() {
-    //TODO add logic
+    const randomAlpaca = [];
+    const randomActiveStyle = [];
+
+    Object.values(allAlpacaData).forEach(val => {
+      const randomValue = val.length;
+      const randomArrayIndex = Math.floor(Math.random() * randomValue);
+      randomAlpaca.push(val[randomArrayIndex].img);
+      randomActiveStyle.push(val[randomArrayIndex].name);
+
+    });
+    setAlpacaImg(randomAlpaca);
+    setActiveStyle(randomActiveStyle);
   }
   function downloadAlpaca() {
     //TODO add logic
