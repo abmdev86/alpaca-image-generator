@@ -114,6 +114,8 @@ function App() {
               {styleButtons}
             </div>
           </div>
+          <div>
+          </div>
         </div>
       </div>
     </div>
