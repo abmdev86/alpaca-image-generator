@@ -159,32 +159,7 @@ export const styleData = {
     }
   ],
 
-  Hair: [
-    {
-      name: 'Default',
-      img: defaultHair
-    },
-    {
-      name: 'Bangs',
-      img: bangHair
-    },
-    {
-      name: 'Curls',
-      img: curls
-    }, {
-      name: 'Elegant',
-      img: elegant
-    }, {
-      name: 'Fancy',
-      img: fancy
-    }, {
-      name: 'Quiff',
-      img: quiff
-    }, {
-      name: 'Short',
-      img: short
-    },
-  ],
+
   Legs: [
     {
       name: 'BubbleTea',
@@ -232,6 +207,32 @@ export const styleData = {
       name: "Nose",
       img: nose
     }
+  ],
+  Hair: [
+    {
+      name: 'Default',
+      img: defaultHair
+    },
+    {
+      name: 'Bangs',
+      img: bangHair
+    },
+    {
+      name: 'Curls',
+      img: curls
+    }, {
+      name: 'Elegant',
+      img: elegant
+    }, {
+      name: 'Fancy',
+      img: fancy
+    }, {
+      name: 'Quiff',
+      img: quiff
+    }, {
+      name: 'Short',
+      img: short
+    },
   ],
   Mouth: [
     {
