@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "ABM Alpaca Generator",
+  "name": "Alpaca Generator",
   "icons": [
     {
       "src": "favicon.ico",
