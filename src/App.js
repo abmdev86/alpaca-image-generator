@@ -122,7 +122,6 @@ function App() {
       {/* style containter */}
       <div className='styling-container'>
         <div className='category-container'>
-
           <h2>Alpaca Accessories</h2>
           <div className='category-btns'>
             {categoryBtns}

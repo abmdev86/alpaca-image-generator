@@ -35,21 +35,21 @@ import tiltedBackwards from '../img/alpaca/ears/tilt-backward.png';
 import tiltedForward from '../img/alpaca/ears/tilt-forward.png';
 
 // Eyes
-import defaultEyes from '../img/alpaca/eyes/default.png'
-import angryEyes from '../img/alpaca/eyes/angry.png'
-import naughtyEyes from '../img/alpaca/eyes/naughty.png'
-import pandaEyes from '../img/alpaca/eyes/panda.png'
-import smartEyes from '../img/alpaca/eyes/smart.png'
-import starEyes from '../img/alpaca/eyes/star.png'
+import defaultEyes from '../img/alpaca/eyes/default.png';
+import angryEyes from '../img/alpaca/eyes/angry.png';
+import naughtyEyes from '../img/alpaca/eyes/naughty.png';
+import pandaEyes from '../img/alpaca/eyes/panda.png';
+import smartEyes from '../img/alpaca/eyes/smart.png';
+import starEyes from '../img/alpaca/eyes/star.png';
 
 // Hair
-import bangHair from '../img/alpaca/hair/bang.png'
-import curls from '../img/alpaca/hair/curls.png'
-import defaultHair from '../img/alpaca/hair/default.png'
-import elegant from '../img/alpaca/hair/elegant.png'
-import fancy from '../img/alpaca/hair/fancy.png'
-import quiff from '../img/alpaca/hair/quiff.png'
-import short from '../img/alpaca/hair/short.png'
+import bangHair from '../img/alpaca/hair/bang.png';
+import curls from '../img/alpaca/hair/curls.png';
+import defaultHair from '../img/alpaca/hair/default.png';
+import elegant from '../img/alpaca/hair/elegant.png';
+import fancy from '../img/alpaca/hair/fancy.png';
+import quiff from '../img/alpaca/hair/quiff.png';
+import short from '../img/alpaca/hair/short.png';
 
 // Leg
 import defaultLeg from '../img/alpaca/leg/default.png';
@@ -60,43 +60,27 @@ import tiltBackwardLeg from '../img/alpaca/leg/tilt-backward.png';
 import tiltForwardLeg from '../img/alpaca/leg/tilt-forward.png';
 
 // Mouth
-import astonished from '../img/alpaca/mouth/astonished.png'
-import defaultMouth from '../img/alpaca/mouth/default.png'
-import eating from '../img/alpaca/mouth/eating.png'
-import laugh from '../img/alpaca/mouth/laugh.png'
-import tongue from '../img/alpaca/mouth/tongue.png'
+import astonished from '../img/alpaca/mouth/astonished.png';
+import defaultMouth from '../img/alpaca/mouth/default.png';
+import eating from '../img/alpaca/mouth/eating.png';
+import laugh from '../img/alpaca/mouth/laugh.png';
+import tongue from '../img/alpaca/mouth/tongue.png';
 
 // Neck
-import bendBackward from '../img/alpaca/neck/bend-backward.png'
-import bendForward from '../img/alpaca/neck/bend-forward.png'
-import defaultNeck from '../img/alpaca/neck/default.png'
-import thick from '../img/alpaca/neck/thick.png'
+import bendBackward from '../img/alpaca/neck/bend-backward.png';
+import bendForward from '../img/alpaca/neck/bend-forward.png';
+import defaultNeck from '../img/alpaca/neck/default.png';
+import thick from '../img/alpaca/neck/thick.png';
 
 // Nose
-import nose from '../img/alpaca/nose/nose.png'
+import nose from '../img/alpaca/nose/nose.png';
 
 
 
 //  export the styleData object. It contains arrays for each category of style. Each array holds objects that represent each image. Each obj
 // has a name and an image source.
 export const styleData = {
-  Accessories: [
-    {
-      name: 'Headphone',
-      img: headphone
-    }, {
-      name: 'Glasses',
-      img: glasses
-    },
-    {
-      name: 'Flower',
-      img: flower
-    },
-    {
-      name: 'Earings',
-      img: earings
-    }
-  ],
+
   Background: [
     {
       name: 'Blue50',
@@ -174,27 +158,7 @@ export const styleData = {
       img: tiltedBackwards
     }
   ],
-  Eyes: [
-    {
-      name: 'Default',
-      img: defaultEyes
-    }, {
-      name: 'Angty',
-      img: angryEyes
-    }, {
-      name: 'Naughty',
-      img: naughtyEyes
-    }, {
-      name: 'Panda',
-      img: pandaEyes
-    }, {
-      name: 'Smart',
-      img: smartEyes
-    }, {
-      name: 'Star',
-      img: starEyes
-    },
-  ],
+
   Hair: [
     {
       name: 'Default',
@@ -243,29 +207,7 @@ export const styleData = {
       img: tiltBackwardLeg
     },
   ],
-  Mouth: [
-    {
-      name: "Astonished",
-      img: astonished
-    },
-    {
-      name: "Default",
-      img: defaultMouth
-    },
-    {
-      name: "Eating",
-      img: eating
-    },
-    {
-      name: "Laugh",
-      img: laugh
 
-    },
-    {
-      name: "Tongue",
-      img: tongue
-    }
-  ],
   Neck: [
     {
       name: "Bend-Backward",
@@ -290,5 +232,66 @@ export const styleData = {
       name: "Nose",
       img: nose
     }
-  ]
+  ],
+  Mouth: [
+    {
+      name: "Astonished",
+      img: astonished
+    },
+    {
+      name: "Default",
+      img: defaultMouth
+    },
+    {
+      name: "Eating",
+      img: eating
+    },
+    {
+      name: "Laugh",
+      img: laugh
+
+    },
+    {
+      name: "Tongue",
+      img: tongue
+    }
+  ],
+  Eyes: [
+    {
+      name: 'Default',
+      img: defaultEyes
+    }, {
+      name: 'Angty',
+      img: angryEyes
+    }, {
+      name: 'Naughty',
+      img: naughtyEyes
+    }, {
+      name: 'Panda',
+      img: pandaEyes
+    }, {
+      name: 'Smart',
+      img: smartEyes
+    }, {
+      name: 'Star',
+      img: starEyes
+    },
+  ],
+  Accessories: [
+    {
+      name: 'Headphone',
+      img: headphone
+    }, {
+      name: 'Glasses',
+      img: glasses
+    },
+    {
+      name: 'Flower',
+      img: flower
+    },
+    {
+      name: 'Earings',
+      img: earings
+    }
+  ],
 };

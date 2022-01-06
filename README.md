@@ -7,7 +7,7 @@ Find the project requirements here: [Alpaca image generator website](https://www
 Built with Create-React-App
 
 ## Screenshots and demo
-
+![screen shot of app](https://i.imgur.com/pCeXdlm.png)
 
 ## Installation
 Fork the project or download the zip.
