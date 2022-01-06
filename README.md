@@ -7,6 +7,7 @@ Find the project requirements here: [Alpaca image generator website](https://www
 Built with Create-React-App
 
 ## Screenshots and demo
+### You can try the app on [Heroku](https://abm-alpaca-image-generator.herokuapp.com/)
 ![screen shot of app](https://i.imgur.com/pCeXdlm.png)
 
 ## Installation
