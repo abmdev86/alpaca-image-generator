@@ -81,7 +81,13 @@ function App() {
     setActiveStyle(randomActiveStyle);
   }
   function downloadAlpaca() {
-    //TODO add logic
+    mergeImages(alpacaImg)
+      .then((b64) => {
+        var a = document.createElement("a");
+        a.href = b64;
+        a.download = "NewAlpaca.png";
+        a.click();
+      });
 
   }
   // For each style button iterate over them adding the index and item. Store in a var and return in App
@@ -102,28 +108,29 @@ function App() {
 
 
   return (
-    <div className="container">
+    <div className="flex-wrapper">
       <h1>Alpaca Generator</h1>
-      <div className='container'>
-        {alpacaAvatar}
-
+      <div className='main-content'>
+        <div className='alpaca-container'>
+          {alpacaAvatar}
+        </div>
       </div>
-      <div className='container-sm'>
+      <div className='random-download-container'>
         <button className='button' onClick={() => randomAlpaca()}> Random</button>
         <button className='button' onClick={() => downloadAlpaca()}>Download</button>
       </div>
       {/* style containter */}
-      <div>
-        <div>
-          {/* category */}
+      <div className='styling-container'>
+        <div className='category-container'>
+
           <h2>Alpaca Accessories</h2>
-          <div>
+          <div className='category-btns'>
             {categoryBtns}
           </div>
           {/* styles */}
           <div>
             <h2>Alpaca Styles</h2>
-            <div>
+            <div className='style-btns'>
               {styleButtons}
             </div>
           </div>
