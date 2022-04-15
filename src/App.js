@@ -1,3 +1,4 @@
+import React from 'react';
 import { useEffect, useState } from 'react';
 import Alpaca from './components/Alpaca';
 import CategoryBtn from './components/CategoryBtn';
