@@ -2,13 +2,14 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
 import { ButtonGroup } from 'react-bootstrap';
-import DropdownButton from "react-bootstrap/Dropdown";
+import DropdownButton from "react-bootstrap/DropdownButton";
 import DropdownItem from "react-bootstrap/esm/DropdownItem";
 import {styleData} from '../data/style';
 
 
 function CategoryButton(props) {
     const [categoryIndex, setCategoryIndex] = useState(0);
+    const [styles, setStyles] = useState([]);
 
 
   return (
@@ -18,13 +19,13 @@ function CategoryButton(props) {
         title={props.categoryName}
         id="bg-nested-dropdown"
       >
-        <DropdownItem>
+        <DropdownItem eventKey="1">
           <button active>Blue</button>
         </DropdownItem>
-        <DropdownItem>
+        <DropdownItem eventKey="2">
           <button active>Red</button>
         </DropdownItem>
-        <DropdownItem>
+        <DropdownItem eventKey="3">
           <button active>Green</button>
         </DropdownItem>
       </DropdownButton>
