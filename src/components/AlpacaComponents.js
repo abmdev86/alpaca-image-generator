@@ -1,4 +1,5 @@
 import React from "react";
+import { Button } from "react-bootstrap";
 
 function CategoryBtn(props) {
   const [activeCategory, name, generateStylesWithOptions] = [
