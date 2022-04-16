@@ -1,8 +1,6 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
-import Alpaca from './components/Alpaca';
-import CategoryBtn from './components/CategoryBtn';
-import StyleBtn from './components/StyleBtn';
+import {Alpaca, CategoryBtn, StyleBtn} from './components/AlpacaComponents';
 import { styleData } from './data/style';
 import mergeImages from 'merge-images';
 
