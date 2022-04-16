@@ -3,12 +3,12 @@
   "name": "Alpaca Generator",
   "icons": [
     {
-      "src": "favicon.ico",
+      "src": "alpaca-generator-icon64.ico",
       "sizes": "64x64 32x32 24x24 16x16",
       "type": "image/x-icon"
     },
     {
-      "src": "logo192.png",
+      "src": "alpacav2logo192.png",
       "type": "image/png",
       "sizes": "192x192"
     },
@@ -21,5 +21,5 @@
   "start_url": ".",
   "display": "standalone",
   "theme_color": "#000000",
-  "background_color": "#DCE1DE"
+  "background_color": "#FEEFDD"
 }
