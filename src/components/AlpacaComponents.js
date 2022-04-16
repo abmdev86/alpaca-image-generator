@@ -1,5 +1,5 @@
 import React from "react";
-import { Button } from "react-bootstrap";
+import DropdownButton  from "react-bootstrap/Dropdown";
 
 function CategoryBtn(props) {
   const [activeCategory, name, generateStylesWithOptions] = [
@@ -8,12 +8,12 @@ function CategoryBtn(props) {
     props.generateStylesWithOptions,
   ];
   return (
-    <button
+    <DropdownButton
+      id="dropdown-basic-button"
       className={activeCategory === name ? "active" : ""}
-      onClick={generateStylesWithOptions}
     >
-      {name}
-    </button>
+ <StyleBtn/>
+    </DropdownButton>
   );
 }
 
