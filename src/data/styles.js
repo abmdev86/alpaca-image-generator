@@ -296,6 +296,7 @@ export const Mouth = {
   ],
 };
 
+// EXPORT Nose Category Object
 export const Nose = {
   id: 1,
   name: "Nose",
@@ -307,6 +308,7 @@ export const Nose = {
   ],
 };
 
+// EXPORT Neck Category Object
 export const Neck = {
   id: 1,
   name: "Neck",
@@ -330,6 +332,7 @@ export const Neck = {
   ],
 };
 
+// EXPORT Leg Category Object
 export const Leg = {
   id: 1,
   name: "Leg",
@@ -361,6 +364,7 @@ export const Leg = {
   ],
 };
 
+// EXPORT Accessories Category Object
 export const Accessories = {
   id: 1,
   name: "Accessories",
