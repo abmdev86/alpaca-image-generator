@@ -36,7 +36,7 @@ function CategoryButton(props) {
     <ButtonGroup>
       <DropdownButton
         as={ButtonGroup}
-        title={props.category.name}
+        title={props.category.name.toUpperCase()}
         id="bg-nested-dropdown"
         onClick={Activate}
       >
@@ -51,23 +51,7 @@ function CategoryButton(props) {
   );
 }
 
-function Alpaca(props) {
-  return <img className="alpaca" src={props.pic} alt="Your created alpaca" />;
-}
 
-function StyleBtn(props) {
-  const [activeStyle, name, generateAlpacaImg] = [
-    props.activeStyle,
-    props.name,
-    props.generateAlpacaImg,
-  ];
-  return (
-    <button
-      className={activeStyle === name ? "active" : ""}
-      onClick={generateAlpacaImg}
-    >
-      {name}
-    </button>
-  );
-}
+
+
 export { CategoryButton };
