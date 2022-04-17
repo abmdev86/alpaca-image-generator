@@ -1,5 +1,3 @@
-
-
 import {
   Background,
   Ears,
@@ -11,7 +9,6 @@ import {
   Leg,
   Accessories,
 } from "./styles";
-
 
 const Styles = {
   Background,

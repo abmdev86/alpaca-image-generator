@@ -20,3 +20,6 @@ run npm install to download depenedancy.
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
 Most open source projects use the MIT license. Feel free to choose whichever license you prefer.
+
+# Backgrounds
+### Blue60 (#2A7BF4) 

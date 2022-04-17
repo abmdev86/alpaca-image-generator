@@ -2,7 +2,9 @@ import React from "react";
 import { useEffect, useState } from "react";
 import { ButtonGroup, DropdownButton } from "react-bootstrap";
 import DropdownItem from "react-bootstrap/esm/DropdownItem";
-import { GetGeneratedUUID } from "../Utils/UtilityFunctions";
+
+
+
 /**
  * @param  {props.category} props
  * Generates a dropdown that lists the styles available for the category
@@ -33,14 +35,17 @@ function CategoryDropDown(props) {
   function Activate() {
     setIsActive(true);
   }
+  
   const dropDownItems = styles[0].map((style) => {
-    style.id = GetGeneratedUUID();
+    //TODO: replace call to method with using util func.
+   
     return (
       <DropdownItem className="style-button" key={style.id} eventKey={style.id}>
         {style.name}
       </DropdownItem>
     );
   });
+
   return (
     <ButtonGroup>
       <DropdownButton

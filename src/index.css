@@ -39,21 +39,12 @@ a {
   justify-content: center;
   position: relative;
 }
-button {
+.style-button {
   background-color: transparent;
   box-shadow: 0 0 3px 0 #80b0f8;
-  font-family: "Inter", sans-serif;
-  color: #80b0f8;
-  border-radius: 25px;
-  border: 2px solid transparent;
-  padding: 15px 35px;
-  margin-right: 10px;
-  margin-bottom: 10px;
-  box-sizing: border-box;
-  cursor: pointer;
-  font-weight: 800;
+ 
 }
-button:hover {
+.button:hover {
   border: 2px solid #24509d;
   color: #24509d;
 }

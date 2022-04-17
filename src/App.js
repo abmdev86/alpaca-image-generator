@@ -1,21 +1,27 @@
-import React from 'react';
+import React from "react";
+import { useEffect } from "react";
 import mergeImages from "merge-images";
 import Container from "react-bootstrap/Container";
-import  CategoryDropDown from "./components/CategoryDropDown";
+import CategoryDropDown from "./components/CategoryDropDown";
 import Styles from "./data";
+import {
+  GetCategoryObjects,
+  GetCategoryObject,
+  GetStyleObjects,
+  GetStyleObjectsFromCategory,
+  seedIDs,
+} from "./Utils/UtilityFunctions";
 
 function App() {
+  const categories = GetCategoryObjects();
+  const categoryButtons = categories.map((cat) => {
+    return <CategoryDropDown category={cat} />;
+  });
+
   return (
     <Container fluid>
-      <CategoryDropDown category={Styles.Background} />
-      <CategoryDropDown category={Styles.Ears} />
-      <CategoryDropDown category={Styles.Eyes} />
-      <CategoryDropDown category={Styles.Hair} />
-      <CategoryDropDown category={Styles.Mouth} />
-      <CategoryDropDown category={Styles.Nose} />
-      <CategoryDropDown category={Styles.Neck} />
-      <CategoryDropDown category={Styles.Leg} />
-      <CategoryDropDown category={Styles.Accessories} />
+      {categoryButtons}
+      <Container fluid>{/* {TODO: insert image component} */}</Container>
     </Container>
   );
 }
