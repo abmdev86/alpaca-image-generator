@@ -1,11 +1,7 @@
-html {
-  box-sizing: border-box;
-}
+
 body {
-  font-family: sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background-color: #3a273a;
+  
+  background-color: #FEEFDD;
 }
 .main-content {
   display: flex;
