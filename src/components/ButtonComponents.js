@@ -42,7 +42,7 @@ function CategoryButton(props) {
       >
         {styles[0].map((style) => (
           style.id = GetGeneratedUUID(),
-          <DropdownItem key={style.id} eventKey={style.toString()}>
+          <DropdownItem key={style.id} eventKey={style.id}>
             {style.name}
           </DropdownItem>
         ))}
