@@ -1,9 +1,4 @@
-// accessories
-import earings from "../img/alpaca/accessories/earings.png";
-import flower from "../img/alpaca/accessories/flower.png";
-import glasses from "../img/alpaca/accessories/glasses.png";
-import headphone from "../img/alpaca/accessories/headphone.png";
-
+//TODO: look at lazy load or something. probably DB it.
 //backgrounds
 import blue50 from "../img/alpaca/backgrounds/blue50.png";
 import blue60 from "../img/alpaca/backgrounds/blue60.png";
@@ -12,23 +7,18 @@ import blue70 from "../img/alpaca/backgrounds/blue70.png";
 import defaultEars from "../img/alpaca/ears/default.png";
 import tiltedBackwards from "../img/alpaca/ears/tilt-backward.png";
 import tiltedForward from "../img/alpaca/ears/tilt-forward.png";
-
 import darkBlue30 from "../img/alpaca/backgrounds/darkblue30.png";
 import darkBlue50 from "../img/alpaca/backgrounds/darkblue50.png";
 import darkBlue70 from "../img/alpaca/backgrounds/darkblue70.png";
-
 import green50 from "../img/alpaca/backgrounds/green50.png";
 import green60 from "../img/alpaca/backgrounds/green60.png";
 import green70 from "../img/alpaca/backgrounds/green70.png";
-
 import grey40 from "../img/alpaca/backgrounds/grey40.png";
 import grey70 from "../img/alpaca/backgrounds/grey70.png";
 import grey80 from "../img/alpaca/backgrounds/grey80.png";
-
 import red50 from "../img/alpaca/backgrounds/red50.png";
 import red60 from "../img/alpaca/backgrounds/red60.png";
 import red70 from "../img/alpaca/backgrounds/red70.png";
-
 import yellow50 from "../img/alpaca/backgrounds/yellow50.png";
 import yellow60 from "../img/alpaca/backgrounds/yellow60.png";
 import yellow70 from "../img/alpaca/backgrounds/yellow70.png";
@@ -50,6 +40,22 @@ import fancy from "../img/alpaca/hair/fancy.png";
 import quiff from "../img/alpaca/hair/quiff.png";
 import short from "../img/alpaca/hair/short.png";
 
+// Mouth
+import astonished from "../img/alpaca/mouth/astonished.png";
+import defaultMouth from "../img/alpaca/mouth/default.png";
+import eating from "../img/alpaca/mouth/eating.png";
+import laugh from "../img/alpaca/mouth/laugh.png";
+import tongue from "../img/alpaca/mouth/tongue.png";
+
+// Nose
+import nose from "../img/alpaca/nose/nose.png";
+
+// Neck
+import bendBackward from "../img/alpaca/neck/bend-backward.png";
+import bendForward from "../img/alpaca/neck/bend-forward.png";
+import defaultNeck from "../img/alpaca/neck/default.png";
+import thick from "../img/alpaca/neck/thick.png";
+
 // Leg
 import defaultLeg from "../img/alpaca/leg/default.png";
 import bubbleTea from "../img/alpaca/leg/bubble-tea.png";
@@ -58,23 +64,16 @@ import gameConsole from "../img/alpaca/leg/game-console.png";
 import tiltBackwardLeg from "../img/alpaca/leg/tilt-backward.png";
 import tiltForwardLeg from "../img/alpaca/leg/tilt-forward.png";
 
-// Mouth
-import astonished from "../img/alpaca/mouth/astonished.png";
-import defaultMouth from "../img/alpaca/mouth/default.png";
-import eating from "../img/alpaca/mouth/eating.png";
-import laugh from "../img/alpaca/mouth/laugh.png";
-import tongue from "../img/alpaca/mouth/tongue.png";
 
-// Neck
-import bendBackward from "../img/alpaca/neck/bend-backward.png";
-import bendForward from "../img/alpaca/neck/bend-forward.png";
-import defaultNeck from "../img/alpaca/neck/default.png";
-import thick from "../img/alpaca/neck/thick.png";
+// Accessories
+import earings from "../img/alpaca/accessories/earings.png";
+import flower from "../img/alpaca/accessories/flower.png";
+import glasses from "../img/alpaca/accessories/glasses.png";
+import headphone from "../img/alpaca/accessories/headphone.png";
 
-// Nose
-import nose from "../img/alpaca/nose/nose.png";
 
-//export Background category object
+
+//EXPORT Background category object
 export const Background = {
   id: 1,
   name: "backgrounds",
@@ -172,9 +171,10 @@ export const Background = {
   ],
 };
 
-// EXPORT EARS Category Object
+// EXPORT Ears Category Object
 export const Ears = {
   id: 2,
+  name: "Ears",
   styles: [
     {
       id: 1,
@@ -190,6 +190,196 @@ export const Ears = {
       id: 1,
       name: "tiltBackwards",
       img: tiltedBackwards,
+    },
+  ],
+};
+
+// EXPORT Eyes Category Object
+export const Eyes = {
+  id: 3,
+  name: "Eyes",
+  styles: [
+    {
+      id: 1,
+      name: "Default",
+      img: defaultEyes,
+    },
+    {
+      id: 1,
+      name: "Angty",
+      img: angryEyes,
+    },
+    {
+      id: 1,
+      name: "Naughty",
+      img: naughtyEyes,
+    },
+    {
+      id: 1,
+      name: "Panda",
+      img: pandaEyes,
+    },
+    {
+      id: 1,
+      name: "Smart",
+      img: smartEyes,
+    },
+    {
+      id: 1,
+      name: "Star",
+      img: starEyes,
+    },
+  ],
+};
+
+// EXPORT Hair Category Object
+export const Hair = {
+  id: 1,
+  name: "Hair",
+  styles: [
+    {
+      name: "Default",
+      img: defaultHair,
+    },
+    {
+      name: "Bangs",
+      img: bangHair,
+    },
+    {
+      name: "Curls",
+      img: curls,
+    },
+    {
+      name: "Elegant",
+      img: elegant,
+    },
+    {
+      name: "Fancy",
+      img: fancy,
+    },
+    {
+      name: "Quiff",
+      img: quiff,
+    },
+    {
+      name: "Short",
+      img: short,
+    },
+  ],
+};
+
+// EXPORT Mouth Category Object
+export const Mouth = {
+  id: 1,
+  name: "Mouth",
+  styles: [
+    {
+      name: "Astonished",
+      img: astonished,
+    },
+    {
+      name: "Default",
+      img: defaultMouth,
+    },
+    {
+      name: "Eating",
+      img: eating,
+    },
+    {
+      name: "Laugh",
+      img: laugh,
+    },
+    {
+      name: "Tongue",
+      img: tongue,
+    },
+  ],
+};
+
+export const Nose = {
+  id: 1,
+  name: "Nose",
+  styles: [
+    {
+      name: "Default",
+      img: nose,
+    },
+  ],
+};
+
+export const Neck = {
+  id: 1,
+  name: "Neck",
+  styles: [
+    {
+      name: "Bend-Backward",
+      img: bendBackward,
+    },
+    {
+      name: "Bend-Forward",
+      img: bendForward,
+    },
+    {
+      name: "Default",
+      img: defaultNeck,
+    },
+    {
+      name: "Thick",
+      img: thick,
+    },
+  ],
+};
+
+export const Leg = {
+  id: 1,
+  name: "Leg",
+  styles: [
+    {
+      name: "BubbleTea",
+      img: bubbleTea,
+    },
+    {
+      name: "Cookie",
+      img: cookie,
+    },
+    {
+      name: "DefaultLeg",
+      img: defaultLeg,
+    },
+    {
+      name: "GameConsole",
+      img: gameConsole,
+    },
+    {
+      name: "TiltForward",
+      img: tiltForwardLeg,
+    },
+    {
+      name: "tiltBackwards",
+      img: tiltBackwardLeg,
+    },
+  ],
+};
+
+export const Accessories = {
+  id: 1,
+  name: "Accessories",
+  styles: [
+    {
+      name: "Headphone",
+      img: headphone,
+    },
+    {
+      name: "Glasses",
+      img: glasses,
+    },
+    {
+      name: "Flower",
+      img: flower,
+    },
+    {
+      name: "Earings",
+      img: earings,
     },
   ],
 };
