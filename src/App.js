@@ -1,21 +1,28 @@
-import React from "react";
-import { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import mergeImages from "merge-images";
 import Container from "react-bootstrap/Container";
 import CategoryDropDown from "./components/CategoryDropDown";
-import Styles from "./data";
 import {
-  GetCategoryObjects,
-  GetCategoryObject,
-  GetStyleObjects,
-  GetStyleObjectsFromCategory,
-  seedIDs,
+  getCategoryObjects,
+  setObjectsId,
+  getGeneratedUUID,
+  getStyleObjectFromCategory,
 } from "./Utils/UtilityFunctions";
 
 function App() {
-  const categories = GetCategoryObjects();
+  // const [idSet, setIdSet] = useState(false);
+  const categories = getCategoryObjects();
+
+  useEffect(() => {
+    setObjectsId();
+
+    console.log(getStyleObjectFromCategory(categories[2]));
+
+    console.log(getStyleObjectFromCategory(categories[1]));
+  }, []);
+
   const categoryButtons = categories.map((cat) => {
-    return <CategoryDropDown category={cat} />;
+    return <CategoryDropDown key={getGeneratedUUID()} category={cat} />;
   });
 
   return (

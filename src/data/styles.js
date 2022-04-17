@@ -234,34 +234,41 @@ export const Eyes = {
 
 // EXPORT Hair Category Object
 export const Hair = {
-  id: 1,
+  id: 4,
   name: "Hair",
   styles: [
     {
+      id: 1,
       name: "Default",
       img: defaultHair,
     },
     {
+      id: 1,
       name: "Bangs",
       img: bangHair,
     },
     {
+      id: 1,
       name: "Curls",
       img: curls,
     },
     {
+      id: 1,
       name: "Elegant",
       img: elegant,
     },
     {
+      id: 1,
       name: "Fancy",
       img: fancy,
     },
     {
+      id: 1,
       name: "Quiff",
       img: quiff,
     },
     {
+      id: 1,
       name: "Short",
       img: short,
     },
@@ -270,26 +277,31 @@ export const Hair = {
 
 // EXPORT Mouth Category Object
 export const Mouth = {
-  id: 1,
+  id: 5,
   name: "Mouth",
   styles: [
     {
+      id: 1,
       name: "Astonished",
       img: astonished,
     },
     {
+      id: 1,
       name: "Default",
       img: defaultMouth,
     },
     {
+      id: 1,
       name: "Eating",
       img: eating,
     },
     {
+      id: 1,
       name: "Laugh",
       img: laugh,
     },
     {
+      id: 1,
       name: "Tongue",
       img: tongue,
     },
@@ -298,10 +310,11 @@ export const Mouth = {
 
 // EXPORT Nose Category Object
 export const Nose = {
-  id: 1,
+  id: 6,
   name: "Nose",
   styles: [
     {
+      id: 1,
       name: "Default",
       img: nose,
     },
@@ -310,22 +323,26 @@ export const Nose = {
 
 // EXPORT Neck Category Object
 export const Neck = {
-  id: 1,
+  id: 7,
   name: "Neck",
   styles: [
     {
+      id: 1,
       name: "Bend-Backward",
       img: bendBackward,
     },
     {
+      id: 1,
       name: "Bend-Forward",
       img: bendForward,
     },
     {
+      id: 1,
       name: "Default",
       img: defaultNeck,
     },
     {
+      id: 1,
       name: "Thick",
       img: thick,
     },
@@ -334,30 +351,36 @@ export const Neck = {
 
 // EXPORT Leg Category Object
 export const Leg = {
-  id: 1,
+  id: 8,
   name: "Leg",
   styles: [
     {
+      id: 1,
       name: "BubbleTea",
       img: bubbleTea,
     },
     {
+      id: 1,
       name: "Cookie",
       img: cookie,
     },
     {
+      id: 1,
       name: "DefaultLeg",
       img: defaultLeg,
     },
     {
+      id: 1,
       name: "GameConsole",
       img: gameConsole,
     },
     {
+      id: 1,
       name: "TiltForward",
       img: tiltForwardLeg,
     },
     {
+      id: 1,
       name: "tiltBackwards",
       img: tiltBackwardLeg,
     },
@@ -366,22 +389,26 @@ export const Leg = {
 
 // EXPORT Accessories Category Object
 export const Accessories = {
-  id: 1,
+  id: 9,
   name: "Accessories",
   styles: [
     {
+      id: 1,
       name: "Headphone",
       img: headphone,
     },
     {
+      id: 1,
       name: "Glasses",
       img: glasses,
     },
     {
+      id: 1,
       name: "Flower",
       img: flower,
     },
     {
+      id: 1,
       name: "Earings",
       img: earings,
     },

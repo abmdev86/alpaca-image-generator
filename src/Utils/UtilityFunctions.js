@@ -1,30 +1,43 @@
 import { v4 as uuidv4 } from "uuid";
 import Styles from "../data";
+
+const data = Styles;
+
 /**
  * returns a randomly generated UUID
  */
-export function GetGeneratedUUID() {
+export function getGeneratedUUID() {
   return uuidv4();
 }
 
-export function seedIDs(data){
- 
-  Object.values(this.data).forEach(val =>{
-   val.id = GetGeneratedUUID();
-    console.log(val.id);
-  });
-  return;
- 
+export function setObjectsId() {
+  try {
+    Object.values(data).forEach((val) => {
+      val.id = getGeneratedUUID();
+    });
+// const styleObj = getStyleObjects();
+//  console.log(styleObj);
+//     Object.values(styleObj).forEach((val, i) => {
+     
+//       val.id = getGeneratedUUID();
+//     });
+
+    return true;
+
+  } catch (e) {
+    console.error("seedIDs() " + e.message);
+    console.error(e.lineNumber);
+    return false;
+  }
 }
 /**
  * sets Category ids of Styles.Category objects and returns.
  */
-export function GetCategoryObjects() {
+export function getCategoryObjects() {
   const source = Styles;
 
   try {
     const values = Object.values(source);
-    
 
     return values;
   } catch (e) {
@@ -33,22 +46,21 @@ export function GetCategoryObjects() {
   }
 }
 
-export function GetCategoryObject(categoryName) {
+export function getCategoryObject(categoryName) {
   try {
     const name = categoryName.toUpperCase().trim();
-    const categories = GetCategoryObjects();
-    const category = { };
+    const categories = getCategoryObjects();
+    const category = {};
     const categoryArr = categories.map((key) => {
-    if (key.name.toUpperCase().trim() === name) {
-             Object.assign(category, key);
-      } 
-     return key;
+      if (key.name.toUpperCase().trim() === name) {
+        Object.assign(category, key);
+      }
+      return key;
     });
 
-
-if (Object.entries(category).length === 0) {
-  throw new Error(`Cannot find ${name}`);
-}
+    if (Object.entries(category).length === 0) {
+      throw new Error(`Cannot find ${name}`);
+    }
     return category;
   } catch (e) {
     console.error("Utility:GetCategoryObject(): " + e.message);
@@ -64,10 +76,10 @@ if (Object.entries(category).length === 0) {
 /**
  * Returns an Object containing ALL the available styles from each Category
  */
-export function GetStyleObjects() {
+export function getStyleObjects() {
   const styleObjs = [];
   try {
-    const catObjects = GetCategoryObjects();
+    const catObjects = getCategoryObjects();
     catObjects.forEach((cat) => {
       styleObjs.push(cat.styles);
     });
@@ -79,7 +91,9 @@ export function GetStyleObjects() {
   }
 }
 
-export function GetStyleObjectsFromCategory(category) {
+export function getStyleObjectFromCategory(category) {
+  const styleObject = {}
+  console.log(category.name);
   try {
     return category.styles;
   } catch (e) {
