@@ -5,10 +5,10 @@ import DropdownItem from "react-bootstrap/esm/DropdownItem";
 import { GetGeneratedUUID } from "../Utils/UtilityFunctions";
 /**
  * @param  {props.category} props
- * Generates a dropdown that lists the styles available for the category 
+ * Generates a dropdown that lists the styles available for the category
  * provided.
  * expected props:
- *  
+ *
  */
 function CategoryDropDown(props) {
   const [styles, setStyles] = useState([props.category.styles]);
@@ -17,10 +17,7 @@ function CategoryDropDown(props) {
   useEffect(() => {
     try {
       if (styles.length !== 0) return;
-
-      Object.values(props.category.styles).map((item) => {
-        setStyles(item);
-      });
+      setStyles(props.category.styles);
     } catch (error) {
       //TODO: add a logger
       console.error(error);
@@ -36,7 +33,14 @@ function CategoryDropDown(props) {
   function Activate() {
     setIsActive(true);
   }
-
+  const dropDownItems = styles[0].map((style) => {
+    style.id = GetGeneratedUUID();
+    return (
+      <DropdownItem className="style-button" key={style.id} eventKey={style.id}>
+        {style.name}
+      </DropdownItem>
+    );
+  });
   return (
     <ButtonGroup>
       <DropdownButton
@@ -44,17 +48,10 @@ function CategoryDropDown(props) {
         title={props.category.name.toUpperCase()}
         id="bg-nested-dropdown"
         onClick={Activate}
+        className={props.className}
+        variant="info"
       >
-        {styles[0].map(
-          (style) => (
-            (style.id = GetGeneratedUUID()),
-            (
-              <DropdownItem key={style.id} eventKey={style.id}>
-                {style.name}
-              </DropdownItem>
-            )
-          )
-        )}
+        {dropDownItems}
       </DropdownButton>
     </ButtonGroup>
   );
