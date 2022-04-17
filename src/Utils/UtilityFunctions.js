@@ -1,4 +1,5 @@
+import { v4 as uuidv4 } from "uuid";
 
-
-// get a category dropdown "Background"
-// displays a list of all the Styles available as buttons
+export function GetGeneratedUUID() {
+  return uuidv4();
+}

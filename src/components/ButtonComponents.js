@@ -1,51 +1,53 @@
-
-import React from 'react';
-import { useEffect, useState } from 'react';
-import { ButtonGroup } from 'react-bootstrap';
-import DropdownButton from "react-bootstrap/DropdownButton";
+import React from "react";
+import { useEffect, useState } from "react";
+import { ButtonGroup,DropdownButton } from "react-bootstrap";
 import DropdownItem from "react-bootstrap/esm/DropdownItem";
-import {styleData} from '../data/style';
-
+import { GetGeneratedUUID } from "../Utils/UtilityFunctions";
 
 function CategoryButton(props) {
-    const [categoryIndex, setCategoryIndex] = useState(0);
-    const [styles, setStyles] = useState([]);
+  const [styles, setStyles] = useState([props.category.styles]);
+  const [isActive, setIsActive] = useState(false);
 
+  useEffect(() => {
+    try {
+         if (styles.length !== 0) return;
+
+         Object.values(props.category.styles).map((item) => {
+           setStyles(item);
+         });
+ 
+    } catch (error) {
+      //TODO: add a logger
+      console.error(error);
+    }
+  }, [props.category]);
+
+  useEffect(() => {
+    if (!isActive) return;
+    if (styles.length === 0) return;
+    setIsActive(false);
+  }, [isActive]);
+
+  function Activate() {
+    setIsActive(true);
+  }
 
   return (
     <ButtonGroup>
       <DropdownButton
         as={ButtonGroup}
-        title={props.categoryName}
+        title={props.category.name}
         id="bg-nested-dropdown"
+        onClick={Activate}
       >
-        <DropdownItem eventKey="1">
-          <button active>Blue</button>
-        </DropdownItem>
-        <DropdownItem eventKey="2">
-          <button active>Red</button>
-        </DropdownItem>
-        <DropdownItem eventKey="3">
-          <button active>Green</button>
-        </DropdownItem>
+        {styles[0].map((style) => (
+          style.id = GetGeneratedUUID(),
+          <DropdownItem key={style.id} eventKey={style.toString()}>
+            {style.name}
+          </DropdownItem>
+        ))}
       </DropdownButton>
     </ButtonGroup>
-  );
-}
-
-function CategoryBtn(props) {
-  const [activeCategory, name, generateStylesWithOptions] = [
-    props.activeCategory,
-    props.name,
-    props.generateStylesWithOptions,
-  ];
-  return (
-    <DropdownButton
-      id="dropdown-basic-button"
-      className={activeCategory === name ? "active" : ""}
-    >
- <StyleBtn/>
-    </DropdownButton>
   );
 }
 
@@ -68,6 +70,4 @@ function StyleBtn(props) {
     </button>
   );
 }
-export{
-  CategoryButton
-}
+export { CategoryButton };
