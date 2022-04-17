@@ -32,6 +32,7 @@ class ErrorBoundary extends React.Component {
           <Alert variant="danger">
             Sorry, something went wrong...
             <p className="visually-hidden">Text color is Red</p>
+            <p className="visually-hidden">Sorry, something went wrong...</p>
           </Alert>
         </Container>
       );
