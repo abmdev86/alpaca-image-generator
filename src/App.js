@@ -16,9 +16,9 @@ function App() {
   useEffect(() => {
     setObjectsId();
 
-    console.log(getStyleObjectFromCategory(categories[2]));
+    //console.log(getStyleObjectFromCategory(categories[2]));
 
-    console.log(getStyleObjectFromCategory(categories[1]));
+   // console.log(getStyleObjectFromCategory(categories[1]));
   }, []);
 
   const categoryButtons = categories.map((cat) => {

@@ -12,18 +12,15 @@ export function getGeneratedUUID() {
 
 export function setObjectsId() {
   try {
-    Object.values(data).forEach((val) => {
+    Object.values(data).forEach((val,i) => {
+      const style= getStyleObjectFromCategory(val);
+    console.log(style[i].name);
       val.id = getGeneratedUUID();
+
     });
-// const styleObj = getStyleObjects();
-//  console.log(styleObj);
-//     Object.values(styleObj).forEach((val, i) => {
-     
-//       val.id = getGeneratedUUID();
-//     });
+
 
     return true;
-
   } catch (e) {
     console.error("seedIDs() " + e.message);
     console.error(e.lineNumber);
@@ -92,10 +89,9 @@ export function getStyleObjects() {
 }
 
 export function getStyleObjectFromCategory(category) {
-  const styleObject = {}
-  console.log(category.name);
+
   try {
-    return category.styles;
+    return Object.values(category.styles);
   } catch (e) {
     console.error("Utility:GetStyleObjects(): " + e.message);
     return;
