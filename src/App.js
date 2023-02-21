@@ -5,6 +5,7 @@ import StyleBtn from "./components/StyleBtn";
 import { styleData } from "./data/style";
 import mergeImages from "merge-images";
 import React from "react";
+
 function App() {
   const [allAlpacaData, setAllAlpacaData] = useState([]);
   const [activeCategory, setActiveCategory] = useState("Background");
