@@ -46,7 +46,7 @@ function App() {
 
     const images = getCurrentImageSources();
     setAlpacaImage(images);
-  }, [userSelections]);
+  }, [alpcaImage, userSelections]);
 
   function randomAlpaca() {
     const options = { ...AvailableOptions };
