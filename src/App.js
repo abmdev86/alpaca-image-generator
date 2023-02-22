@@ -1,147 +1,131 @@
 import { useEffect, useState } from "react";
 import Alpaca from "./components/Alpaca";
-import CategoryBtn from "./components/CategoryBtn";
-import StyleBtn from "./components/StyleBtn";
-import { styleData } from "./data/style";
+import Grid from "@mui/material/Grid";
+
+import IconButton from "@mui/material/IconButton";
+import DownloadIcon from "@mui/icons-material/Download";
+import ShuffleOnIcon from "@mui/icons-material/ShuffleOn";
 import mergeImages from "merge-images";
 import React from "react";
+import CategorySelect from "./components/CategorySelect";
+
+import UserSelectionContext, {
+  UserSelections,
+} from "./contexts/UserSelectionContext";
+import OptionsList from "./components/OptionsList";
+import OptionsContext from "./contexts/OptionsContext";
+import AvailableOptions from "./data";
+import { Container, Typography } from "@mui/material";
 
 function App() {
-  const [allAlpacaData, setAllAlpacaData] = useState([]);
-  const [activeCategory, setActiveCategory] = useState("Background");
-  const [activeStyle, setActiveStyle] = useState([]);
-  const [alpacaImg, setAlpacaImg] = useState([]);
-  const [styleOptions, setStyleOptions] = useState([]);
+  const [userSelections, setUserSelections] = useState(UserSelections);
+  const [options, setOptions] = useState({
+    value: AvailableOptions[userSelections.currentCategoryName],
+    currentCategory: userSelections.currentCategoryName,
+  });
 
-  const [categoryIndex, setCategoryIndex] = useState(0);
-
-  //hooks
-  useEffect(() => {
-    const alpacaImageArray = [];
-    const defaultStylesArray = [];
-
-    Object.values(styleData).forEach((val) => {
-      alpacaImageArray.push(val[0].img);
-      defaultStylesArray.push(val[0].name);
-    });
-    setAlpacaImg(alpacaImageArray);
-    setActiveStyle(defaultStylesArray);
-    setAllAlpacaData(styleData);
-  }, []);
+  const [alpcaImage, setAlpacaImage] = useState([userSelections]);
 
   useEffect(() => {
-    const optionsArray = [];
-    styleData[activeCategory].map((item) => {
-      return optionsArray.push(item);
-    });
-    setStyleOptions(optionsArray);
-  }, [activeCategory]);
+    function getCurrentImageSources() {
+      let values = [
+        userSelections.backgrounds,
+        userSelections.ears,
+        userSelections.legs,
+        userSelections.necks,
+        userSelections.noses,
+        userSelections.hairstyles,
+        userSelections.mouths,
+        userSelections.eyes,
+        userSelections.accessories,
+      ];
+      if (alpcaImage === values) return;
+      // setAlpacaImage(values);
+      return values;
+    }
 
-  // custom functions
-  function generateStylesWithOptions(category, index) {
-    // btn is set to active when selected
-    const currentName = category;
-    setActiveCategory(currentName);
-    setCategoryIndex(index);
-
-    // sets the state
-    const optionsArray = [];
-    styleData[category].map((item) => {
-      return optionsArray.push(item);
-    });
-    setStyleOptions(optionsArray);
-  }
-
-  // (method) Generates Alpaca using the name and image provided from the active
-  function generateAlpacaImg(name, img) {
-    // set to active
-    const newActiveArray = [...activeStyle];
-    newActiveArray.splice(categoryIndex, 1, name);
-    setActiveStyle(newActiveArray);
-
-    // replaces image in the array and generates img
-    const newAlpacaImg = [...alpacaImg];
-    newAlpacaImg.splice(categoryIndex, 1, img);
-    setAlpacaImg(newAlpacaImg);
-  }
+    const images = getCurrentImageSources();
+    setAlpacaImage(images);
+  }, [userSelections]);
 
   function randomAlpaca() {
-    const randomAlpaca = [];
-    const randomActiveStyle = [];
-
-    Object.values(allAlpacaData).forEach((val) => {
-      const randomValue = val.length;
-      const randomArrayIndex = Math.floor(Math.random() * randomValue);
-      randomAlpaca.push(val[randomArrayIndex].img);
-      randomActiveStyle.push(val[randomArrayIndex].name);
+    const options = { ...AvailableOptions };
+    const newImageArray = [];
+    Object.values(options).forEach((value) => {
+      const randomValue = value.length;
+      const randomIndex = Math.floor(Math.random() * randomValue);
+      newImageArray.push(value[randomIndex].img);
     });
-    setAlpacaImg(randomAlpaca);
-    setActiveStyle(randomActiveStyle);
+
+    setAlpacaImage(newImageArray);
   }
   function downloadAlpaca() {
-    mergeImages(alpacaImg).then((b64) => {
+    mergeImages(alpcaImage).then((b64) => {
       var a = document.createElement("a");
       a.href = b64;
       a.download = "NewAlpaca.png";
       a.click();
     });
   }
-  // For each style button iterate over them adding the index and item. Store in a var and return in App
-  const styleButtons = styleOptions.map((item, index) => {
-    return (
-      <StyleBtn
-        className="btn btn-primary"
-        name={item.name}
-        key={index}
-        activeStyle={activeStyle[categoryIndex]}
-        generateAlpacaImg={() => generateAlpacaImg(item.name, item.img, index)}
-      />
-    );
-  });
-  const categoryBtns = Object.keys(styleData).map((item, index) => {
-    return (
-      <CategoryBtn
-        key={index}
-        name={item}
-        activeCategory={activeCategory}
-        generateStylesWithOptions={() => generateStylesWithOptions(item, index)}
-      />
-    );
-  });
-
-  const alpacaAvatar = alpacaImg.map((item, index) => {
-    return <Alpaca pic={item} key={index} />;
-  });
 
   return (
-    <div className="flex-wrapper">
-      <h1>Alpaca Generator</h1>
-      <div className="main-content">
-        <div className="alpaca-container">{alpacaAvatar}</div>
-      </div>
-      <div className="random-download-container">
-        <button className="button" onClick={() => randomAlpaca()}>
-          {" "}
-          Random
-        </button>
-        <button className="button" onClick={() => downloadAlpaca()}>
-          Download
-        </button>
-      </div>
-      {/* style containter */}
-      <div className="styling-container">
-        <div className="category-container">
-          <h2>Alpaca Accessories</h2>
-          <div className="category-btns">{categoryBtns}</div>
-          {/* styles */}
-          <div>
-            <h2>Alpaca Styles</h2>
-            <div className="style-btns">{styleButtons}</div>
-          </div>
-          <div></div>
-        </div>
-      </div>
-    </div>
+    <OptionsContext.Provider
+      value={{
+        value: options,
+        currentCategory: "backgrounds",
+        setOptions,
+      }}
+    >
+      <UserSelectionContext.Provider
+        value={{ ...userSelections, setUserSelections }}
+      >
+        <Container maxWidth="xl">
+          <Typography variant="h1" textAlign="center">
+            Alpaca Generator
+          </Typography>
+
+          <Grid
+            container
+            spacing={{ xs: 2, md: 3 }}
+            columns={{ xs: 4, sm: 8, md: 12 }}
+          >
+            <Grid item xs={12}>
+              <IconButton
+                sx={{ m: { xs: 0.5, md: 1 } }}
+                variant="contained"
+                aria-label="Generate Random Alpaca"
+                onClick={randomAlpaca}
+              >
+                <ShuffleOnIcon />
+              </IconButton>
+              <IconButton
+                sx={{ m: { xs: 0.5, md: 1 } }}
+                variant="contained"
+                aria-label="Download Alpaca Image"
+                onClick={downloadAlpaca}
+              >
+                <DownloadIcon />
+              </IconButton>
+            </Grid>
+            <Grid item xs={4}>
+              <CategorySelect />
+            </Grid>
+            <Grid item xs={8}>
+              <div className="alpaca-container">
+                <Alpaca imageArray={alpcaImage} />
+              </div>
+            </Grid>
+
+            <Grid item xs={12} sx={{ p: 2 }}>
+              <OptionsList
+                currentOptions={options.value}
+                categoryName={options.currentCategory}
+              />
+            </Grid>
+          </Grid>
+        </Container>
+      </UserSelectionContext.Provider>
+    </OptionsContext.Provider>
   );
 }
 

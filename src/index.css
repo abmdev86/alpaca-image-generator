@@ -5,7 +5,7 @@ body {
   font-family: sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #3a273a;
+  background-color: #1697a83b;
 }
 .main-content {
   display: flex;
@@ -13,10 +13,10 @@ body {
   padding-bottom: 2.5rem;
 }
 
-.flex-wrapper {
+/* .flex-wrapper {
   position: relative;
   min-height: 96vh;
-}
+} */
 
 .footer {
   font-weight: 200;
