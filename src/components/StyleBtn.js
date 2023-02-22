@@ -1,15 +1,10 @@
 import React from "react";
 
-export default function StyleBtn(props) {
-  const [activeStyle, name, generateAlpacaImg] = [
-    props.activeStyle,
-    props.name,
-    props.generateAlpacaImg,
-  ];
+export default function StyleBtn({ activeStyle, name, generateAplacaImg }) {
   return (
     <button
       className={activeStyle === name ? "active" : ""}
-      onClick={generateAlpacaImg}
+      onClick={generateAplacaImg}
     >
       {name}
     </button>
