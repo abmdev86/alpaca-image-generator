@@ -323,5 +323,6 @@ export const AvailableOptions = {
   noses: Noses,
   accessories: Accessories,
 };
+export const CATEGORIES = Object.keys(AvailableOptions);
 
 export default AvailableOptions;

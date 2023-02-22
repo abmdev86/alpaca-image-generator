@@ -1,6 +1,6 @@
-import React, { useContext, useEffect, useState } from "react";
+import React from "react";
 export default function Alpaca({ imageArray }) {
-
+  console.log(imageArray)
   return imageArray.map((source, index) => (
     <img
       key={index}
