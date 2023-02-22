@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import Alpaca from "./components/Alpaca";
 import Grid from "@mui/material/Grid";
-import Button from "@mui/material/Button";
-import Box from "@mui/material/Box";
+
 import IconButton from "@mui/material/IconButton";
 import DownloadIcon from "@mui/icons-material/Download";
 import ShuffleOnIcon from "@mui/icons-material/ShuffleOn";
@@ -40,14 +39,26 @@ function App() {
         userSelections.eyes,
         userSelections.accessories,
       ];
-
-      setAlpacaImage(values);
+      if (alpcaImage === values) return;
+      // setAlpacaImage(values);
+      return values;
     }
 
-    getCurrentImageSources();
-  }, [alpcaImage, userSelections]);
+    const images = getCurrentImageSources();
+    setAlpacaImage(images);
+  }, [userSelections]);
 
-  function randomAlpaca() {}
+  function randomAlpaca() {
+    const options = { ...AvailableOptions };
+    const newImageArray = [];
+    Object.values(options).forEach((value) => {
+      const randomValue = value.length;
+      const randomIndex = Math.floor(Math.random() * randomValue);
+      newImageArray.push(value[randomIndex].img);
+    });
+
+    setAlpacaImage(newImageArray);
+  }
   function downloadAlpaca() {
     mergeImages(alpcaImage).then((b64) => {
       var a = document.createElement("a");
@@ -83,6 +94,7 @@ function App() {
                 sx={{ m: { xs: 0.5, md: 1 } }}
                 variant="contained"
                 aria-label="Generate Random Alpaca"
+                onClick={randomAlpaca}
               >
                 <ShuffleOnIcon />
               </IconButton>

@@ -12,7 +12,7 @@ export default function OptionDisplay({ name, imageSrc, category }) {
     const userSelectionContext = useContext(UserSelectionContext);
 
     const handleSelection = (e) => {
-        console.log(e.target.value)
+
         const newSelection = { ...userSelectionContext };
         newSelection[category] = e.target.value;
 
