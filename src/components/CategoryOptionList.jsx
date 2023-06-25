@@ -17,6 +17,7 @@ export default function CategoryOptionList({
               img: e.target.value,
             },
           });
+          console.log("BG Selected:", e.target.value);
           break;
         case "Accessories":
           setCurrentAlpacaSelection({
@@ -101,15 +102,16 @@ export default function CategoryOptionList({
     <Popover className="relative">
       <Popover.Button>{categoryName ?? "No Category Selected"}</Popover.Button>
       <Popover.Panel className="absolute z-10">
-        <div className="grid grid-cols-2">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {values.map((value, index) => (
             <button
               onClick={handleSelection}
               key={index}
               value={value.img}
               name={value.name}
+              className="bg-rose-600 text-white w-full  py-2 px-6 rounded-xl focus:outline-none focus:ring-4 focus:ring-rose-600 focus:ring-opacity-50 hover:bg-rose-500 transition"
             >
-              {value.name}
+              <p className="text-center">{value.name}</p>
             </button>
           ))}
         </div>

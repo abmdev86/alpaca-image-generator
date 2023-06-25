@@ -24,7 +24,7 @@ const defaultAlpaca = {
 };
 function App() {
   const [currentCateogory, setCurrentCategory] = useState(Categories[0]);
-  const [alpcaImage, setAlpacaImage] = useState([]);
+  // const [alpcaImage, setAlpacaImage] = useState([]);
   const [alpaca, setAlpaca] = useState(defaultAlpaca);
 
   function randomAlpaca() {
@@ -36,10 +36,21 @@ function App() {
       newImageArray.push(value[randomIndex].img);
     });
 
-    setAlpacaImage(newImageArray);
+    // setAlpacaImage(newImageArray);
   }
   function downloadAlpaca() {
-    mergeImages(alpcaImage).then((b64) => {
+    const alpacaArray = [
+      alpaca.background,
+      alpaca.ears,
+      alpaca.neck,
+      alpaca.hair,
+      alpaca.accessory,
+      alpaca.nose,
+      alpaca.eyes,
+      alpaca.mouth,
+      alpaca.legs,
+    ];
+    mergeImages(alpacaArray).then((b64) => {
       var a = document.createElement("a");
       a.href = b64;
       a.download = "NewAlpaca.png";
@@ -51,29 +62,38 @@ function App() {
     <main className="flex-grow container mx-auto">
       <div className="px-4 py-12">
         <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          <SelectCategory
-            currentCategory={currentCateogory}
-            setCategory={setCurrentCategory}
-          />
-          <CategoryOptionList
-            categoryName={currentCateogory.name}
-            values={currentCateogory.options}
-            alpaca={alpaca}
-            setCurrentAlpacaSelection={setAlpaca}
-          />
-          <Alpaca
-            imageArray={[
-              alpaca.background,
-              alpaca.ears,
-              alpaca.neck,
-              alpaca.hair,
-              alpaca.accessory,
-              alpaca.nose,
-              alpaca.eyes,
-              alpaca.mouth,
-              alpaca.legs,
-            ]}
-          />
+          <div>
+            <SelectCategory
+              currentCategory={currentCateogory}
+              setCategory={setCurrentCategory}
+            />
+          </div>
+
+          <div>
+            <CategoryOptionList
+              categoryName={currentCateogory.name}
+              values={currentCateogory.options}
+              alpaca={alpaca}
+              setCurrentAlpacaSelection={setAlpaca}
+            />
+          </div>
+
+          <div className="alpaca-container">
+            <Alpaca
+              imageArray={[
+                alpaca.background,
+                alpaca.ears,
+                alpaca.neck,
+                alpaca.hair,
+                alpaca.accessory,
+                alpaca.nose,
+                alpaca.eyes,
+                alpaca.mouth,
+                alpaca.legs,
+              ]}
+            />
+          </div>
+
           <div>
             {" "}
             <IconButton

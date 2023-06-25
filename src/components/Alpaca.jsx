@@ -5,7 +5,7 @@ export default function Alpaca({ imageArray }) {
       {imageArray.map((source, index) => (
         <img
           key={index}
-          className="absolute w-full max-w-xl top-0 left-0"
+          className="alpaca"
           src={source.img}
           alt="Your created alpaca"
         ></img>
