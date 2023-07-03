@@ -7,31 +7,32 @@ import ShuffleOnIcon from "@mui/icons-material/ShuffleOn";
 import mergeImages from "merge-images";
 
 import SelectCategory from "./components/SelectCategory";
-
-import CategoryOptionList from "./components/CategoryOptionList";
-import Alpaca from "./components/Alpaca";
+import { Toaster } from "react-hot-toast";
 import Categories from "./data";
 import { getAllCategories } from "./data/helpers";
 import Selectoption from "./components/SelectOption";
+import Alpaca from "./data/alpaca";
+import DisplayAlpaca from "./components/DisplayAlpaca";
 
-const defaultAlpaca = {
-  background: Categories.Backgrounds[0].src,
-  accessory: Categories.Accessories[0].src,
-  ears: Categories.Ears[0].src,
-  eyes: Categories.Eyes[0].src,
-  hair: Categories.Hair[0].src,
-  legs: Categories.Legs[0].src,
-  mouth: Categories.Mouths[0].src,
-  neck: Categories.Necks[0].src,
-  nose: Categories.Noses[0].src,
-};
+const defaultAlpaca = new Alpaca(
+  "My Alpaca",
+  Categories.Accessories[0].src,
+  Categories.Backgrounds[0].src,
+  Categories.Ears[0].src,
+  Categories.Eyes[0].src,
+  Categories.Hair[0].src,
+  Categories.Legs[0].src,
+  Categories.Mouths[0].src,
+  Categories.Necks[0].src,
+  Categories.Noses[0].src
+);
 function App() {
   const [currentCateogory, setCurrentCategory] = useState(
     getAllCategories()[0]
   );
-  // const [alpcaImage, setAlpacaImage] = useState([]);
-  const [alpaca, setAlpaca] = useState(defaultAlpaca);
 
+  const [option, setOption] = useState("");
+  const [alpaca, setAlpaca] = useState(defaultAlpaca);
   function randomAlpaca() {
     const options = { ...Categories };
     const newImageArray = [];
@@ -63,6 +64,13 @@ function App() {
     });
   }
 
+  const handleUpdateAlpaca = (value) => {
+    let newAlpaca = Alpaca.updateAlpaca(alpaca, currentCateogory, value);
+    setOption(value);
+
+    setAlpaca(newAlpaca);
+  };
+
   return (
     <main className="flex-grow container mx-auto">
       <div className="px-4 py-12">
@@ -75,23 +83,14 @@ function App() {
           </div>
 
           <div>
-            <Selectoption currentCategory={currentCateogory} />
+            <Selectoption
+              currentCategory={currentCateogory}
+              setOption={handleUpdateAlpaca}
+            />
           </div>
 
           <div className="alpaca-container">
-            <Alpaca
-              imageArray={[
-                alpaca.background,
-                alpaca.ears,
-                alpaca.neck,
-                alpaca.hair,
-                alpaca.accessory,
-                alpaca.nose,
-                alpaca.eyes,
-                alpaca.mouth,
-                alpaca.legs,
-              ]}
-            />
+            <DisplayAlpaca alpaca={alpaca} />
           </div>
 
           <div>
@@ -115,6 +114,7 @@ function App() {
           </div>
         </div>
       </div>
+      <Toaster />
     </main>
   );
 }

@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Listbox } from "@headlessui/react";
 import { getAvailableOptions } from "../data/helpers";
+import toast from "react-hot-toast";
 
-export default function Selectoption({ currentCategory }) {
+export default function Selectoption({ currentCategory, setOption }) {
   const [availableOptions, setAvailableOptions] = useState(
     getAvailableOptions(currentCategory)
   );
@@ -11,8 +12,11 @@ export default function Selectoption({ currentCategory }) {
   const handleOptionSelect = (option) => {
     // todo set the value to a state held in App
     // todo set the name of the option to the current option.
-
+    if (typeof setOption === "function") {
+      setOption(option.src);
+    }
     setCurrentOption(option.name);
+    toast.success(`set ${currentCategory} to ${option.name}`);
   };
   useEffect(() => {
     let options = getAvailableOptions(currentCategory);

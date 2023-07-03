@@ -1,5 +1,5 @@
 import React from "react";
-export default function Alpaca({ imageArray }) {
+export default function AlpacaDisplay({ imageArray }) {
   return (
     <div className="first:relative first:w-full max-w-xl top-0 left-0 ">
       {imageArray.map((source, index) => (

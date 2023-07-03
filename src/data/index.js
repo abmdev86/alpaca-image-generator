@@ -1,5 +1,5 @@
 import { earings, flower, glasses, headphone } from "./accessories";
-import { blue50, blue60, blue70 } from "./backgrounds";
+import { blue50, blue60, blue70, green50 } from "./backgrounds";
 import { defaultEars, tiltedBackwards, tiltedForward } from "./ears";
 import {
   angryEyes,
@@ -62,6 +62,10 @@ const Backgrounds = [
   {
     name: "Blue 70",
     src: blue70,
+  },
+  {
+    name: "Green 50",
+    src: green50,
   },
 ];
 
