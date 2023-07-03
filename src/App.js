@@ -7,56 +7,52 @@ import ShuffleOnIcon from "@mui/icons-material/ShuffleOn";
 import mergeImages from "merge-images";
 
 import SelectCategory from "./components/SelectCategory";
-import Categories from "./data/content";
-import CategoryOptionList from "./components/CategoryOptionList";
-import Alpaca from "./components/Alpaca";
+import { Toaster } from "react-hot-toast";
+import Categories from "./data";
+import { getAllCategories, getRandomAlpaca } from "./data/helpers";
+import Selectoption from "./components/SelectOption";
+import Alpaca from "./data/alpaca";
+import DisplayAlpaca from "./components/DisplayAlpaca";
 
-const defaultAlpaca = {
-  background: Categories[0].options[0],
-  accessory: Categories[1].options[0],
-  ears: Categories[2].options[0],
-  eyes: Categories[3].options[0],
-  hair: Categories[4].options[0],
-  legs: Categories[5].options[0],
-  mouth: Categories[6].options[0],
-  neck: Categories[7].options[0],
-  nose: Categories[8].options[0],
-};
+const defaultAlpaca = new Alpaca(
+  "My Alpaca",
+  Categories.Accessories[0].src,
+  Categories.Backgrounds[0].src,
+  Categories.Ears[0].src,
+  Categories.Eyes[0].src,
+  Categories.Hair[0].src,
+  Categories.Legs[0].src,
+  Categories.Mouths[0].src,
+  Categories.Necks[0].src,
+  Categories.Noses[0].src
+);
 function App() {
-  const [currentCateogory, setCurrentCategory] = useState(Categories[0]);
-  // const [alpcaImage, setAlpacaImage] = useState([]);
+  const [currentCateogory, setCurrentCategory] = useState(
+    getAllCategories()[0]
+  );
+
+  const [option, setOption] = useState("");
   const [alpaca, setAlpaca] = useState(defaultAlpaca);
 
   function randomAlpaca() {
-    const options = { ...Categories };
-    const newImageArray = [];
-    Object.values(options).forEach((value) => {
-      const randomValue = value.length;
-      const randomIndex = Math.floor(Math.random() * randomValue);
-      newImageArray.push(value[randomIndex].img);
-    });
-
-    // setAlpacaImage(newImageArray);
+    const randomAlpaca = getRandomAlpaca();
+    setAlpaca(randomAlpaca);
   }
   function downloadAlpaca() {
-    const alpacaArray = [
-      alpaca.background,
-      alpaca.ears,
-      alpaca.neck,
-      alpaca.hair,
-      alpaca.accessory,
-      alpaca.nose,
-      alpaca.eyes,
-      alpaca.mouth,
-      alpaca.legs,
-    ];
-    mergeImages(alpacaArray).then((b64) => {
+    mergeImages(alpaca.getImage()).then((b64) => {
       var a = document.createElement("a");
       a.href = b64;
-      a.download = "NewAlpaca.png";
+      a.download = alpaca.name;
       a.click();
     });
   }
+
+  const handleUpdateAlpaca = (value) => {
+    let newAlpaca = Alpaca.updateAlpaca(alpaca, currentCateogory, value);
+    setOption(value);
+
+    setAlpaca(newAlpaca);
+  };
 
   return (
     <main className="flex-grow container mx-auto">
@@ -70,28 +66,14 @@ function App() {
           </div>
 
           <div>
-            <CategoryOptionList
-              categoryName={currentCateogory.name}
-              values={currentCateogory.options}
-              alpaca={alpaca}
-              setCurrentAlpacaSelection={setAlpaca}
+            <Selectoption
+              currentCategory={currentCateogory}
+              setOption={handleUpdateAlpaca}
             />
           </div>
 
           <div className="alpaca-container">
-            <Alpaca
-              imageArray={[
-                alpaca.background,
-                alpaca.ears,
-                alpaca.neck,
-                alpaca.hair,
-                alpaca.accessory,
-                alpaca.nose,
-                alpaca.eyes,
-                alpaca.mouth,
-                alpaca.legs,
-              ]}
-            />
+            <DisplayAlpaca alpaca={alpaca} />
           </div>
 
           <div>
@@ -115,6 +97,7 @@ function App() {
           </div>
         </div>
       </div>
+      <Toaster />
     </main>
   );
 }
