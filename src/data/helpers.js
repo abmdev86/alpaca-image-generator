@@ -33,3 +33,27 @@ export const getDefaultAlpaca = () => {
     Categories.Noses[0].src
   );
 };
+
+export const getRandomAlpaca = () => {
+  const alpaca = new Alpaca("Random Generated Alpaca");
+  alpaca.backgrounds = getRandomOption("Backgrounds");
+  alpaca.accessories = getRandomOption("Accessories");
+  alpaca.ears = getRandomOption("Ears");
+  alpaca.eyes = getRandomOption("Eyes");
+  alpaca.hair = getRandomOption("Hair");
+  alpaca.mouths = getRandomOption("Mouths");
+  alpaca.necks = getRandomOption("Necks");
+  alpaca.noses = getRandomOption("Noses");
+  alpaca.legs = getRandomOption("Legs");
+
+  return alpaca;
+};
+
+const getRandomOption = (categoryName) => {
+  if (typeof categoryName !== "string") return;
+  let array = Categories[categoryName];
+  let randomNum = Math.floor(Math.random() * array.length);
+  let randomOption = array[randomNum].src;
+
+  return randomOption;
+};

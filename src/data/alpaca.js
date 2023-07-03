@@ -28,6 +28,7 @@ export default class Alpaca {
 
     return alpaca;
   }
+
   getImage = () => {
     return [
       this.backgrounds,

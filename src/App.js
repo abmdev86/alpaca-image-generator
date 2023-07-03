@@ -9,7 +9,7 @@ import mergeImages from "merge-images";
 import SelectCategory from "./components/SelectCategory";
 import { Toaster } from "react-hot-toast";
 import Categories from "./data";
-import { getAllCategories } from "./data/helpers";
+import { getAllCategories, getRandomAlpaca } from "./data/helpers";
 import Selectoption from "./components/SelectOption";
 import Alpaca from "./data/alpaca";
 import DisplayAlpaca from "./components/DisplayAlpaca";
@@ -33,33 +33,16 @@ function App() {
 
   const [option, setOption] = useState("");
   const [alpaca, setAlpaca] = useState(defaultAlpaca);
-  function randomAlpaca() {
-    const options = { ...Categories };
-    const newImageArray = [];
-    Object.values(options).forEach((value) => {
-      const randomValue = value.length;
-      const randomIndex = Math.floor(Math.random() * randomValue);
-      newImageArray.push(value[randomIndex].img);
-    });
 
-    // setAlpacaImage(newImageArray);
+  function randomAlpaca() {
+    const randomAlpaca = getRandomAlpaca();
+    setAlpaca(randomAlpaca);
   }
   function downloadAlpaca() {
-    const alpacaArray = [
-      alpaca.background,
-      alpaca.ears,
-      alpaca.neck,
-      alpaca.hair,
-      alpaca.accessory,
-      alpaca.nose,
-      alpaca.eyes,
-      alpaca.mouth,
-      alpaca.legs,
-    ];
-    mergeImages(alpacaArray).then((b64) => {
+    mergeImages(alpaca.getImage()).then((b64) => {
       var a = document.createElement("a");
       a.href = b64;
-      a.download = "NewAlpaca.png";
+      a.download = alpaca.name;
       a.click();
     });
   }
