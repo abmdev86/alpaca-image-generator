@@ -7,7 +7,7 @@ import ShuffleOnIcon from "@mui/icons-material/ShuffleOn";
 import mergeImages from "merge-images";
 
 import SelectCategory from "./components/SelectCategory";
-import { Toaster, toast } from "react-hot-toast";
+import { Toaster } from "react-hot-toast";
 import Categories from "./data";
 import { getAllCategories, getRandomAlpaca } from "./data/helpers";
 import Selectoption from "./components/SelectOption";
