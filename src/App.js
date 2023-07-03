@@ -7,23 +7,28 @@ import ShuffleOnIcon from "@mui/icons-material/ShuffleOn";
 import mergeImages from "merge-images";
 
 import SelectCategory from "./components/SelectCategory";
-import Categories from "./data/content";
+
 import CategoryOptionList from "./components/CategoryOptionList";
 import Alpaca from "./components/Alpaca";
+import Categories from "./data";
+import { getAllCategories } from "./data/helpers";
+import Selectoption from "./components/SelectOption";
 
 const defaultAlpaca = {
-  background: Categories[0].options[0],
-  accessory: Categories[1].options[0],
-  ears: Categories[2].options[0],
-  eyes: Categories[3].options[0],
-  hair: Categories[4].options[0],
-  legs: Categories[5].options[0],
-  mouth: Categories[6].options[0],
-  neck: Categories[7].options[0],
-  nose: Categories[8].options[0],
+  background: Categories.Backgrounds[0].src,
+  accessory: Categories.Accessories[0].src,
+  ears: Categories.Ears[0].src,
+  eyes: Categories.Eyes[0].src,
+  hair: Categories.Hair[0].src,
+  legs: Categories.Legs[0].src,
+  mouth: Categories.Mouths[0].src,
+  neck: Categories.Necks[0].src,
+  nose: Categories.Noses[0].src,
 };
 function App() {
-  const [currentCateogory, setCurrentCategory] = useState(Categories[0]);
+  const [currentCateogory, setCurrentCategory] = useState(
+    getAllCategories()[0]
+  );
   // const [alpcaImage, setAlpacaImage] = useState([]);
   const [alpaca, setAlpaca] = useState(defaultAlpaca);
 
@@ -70,12 +75,7 @@ function App() {
           </div>
 
           <div>
-            <CategoryOptionList
-              categoryName={currentCateogory.name}
-              values={currentCateogory.options}
-              alpaca={alpaca}
-              setCurrentAlpacaSelection={setAlpaca}
-            />
+            <Selectoption currentCategory={currentCateogory} />
           </div>
 
           <div className="alpaca-container">

@@ -1,0 +1,19 @@
+//backgrounds
+export { default as blue50 } from "../img/alpaca/backgrounds/blue50.png";
+export { default as blue60 } from "../img/alpaca/backgrounds/blue60.png";
+export { default as blue70 } from "../img/alpaca/backgrounds/blue70.png";
+export { default as darkBlue30 } from "../img/alpaca/backgrounds/darkblue30.png";
+export { default as darkBlue50 } from "../img/alpaca/backgrounds/darkblue50.png";
+export { default as darkBlue70 } from "../img/alpaca/backgrounds/darkblue70.png";
+export { default as green50 } from "../img/alpaca/backgrounds/green50.png";
+export { default as green60 } from "../img/alpaca/backgrounds/green60.png";
+export { default as green70 } from "../img/alpaca/backgrounds/green70.png";
+export { default as grey40 } from "../img/alpaca/backgrounds/grey40.png";
+export { default as grey70 } from "../img/alpaca/backgrounds/grey70.png";
+export { default as grey80 } from "../img/alpaca/backgrounds/grey80.png";
+export { default as red50 } from "../img/alpaca/backgrounds/red50.png";
+export { default as red60 } from "../img/alpaca/backgrounds/red60.png";
+export { default as red70 } from "../img/alpaca/backgrounds/red70.png";
+export { default as yellow50 } from "../img/alpaca/backgrounds/yellow50.png";
+export { default as yellow60 } from "../img/alpaca/backgrounds/yellow60.png";
+export { default as yellow70 } from "../img/alpaca/backgrounds/yellow70.png";
