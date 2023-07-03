@@ -13,6 +13,7 @@ import { getAllCategories, getRandomAlpaca } from "./data/helpers";
 import Selectoption from "./components/SelectOption";
 import Alpaca from "./data/alpaca";
 import DisplayAlpaca from "./components/DisplayAlpaca";
+import InputName from "./components/InputName";
 
 const defaultAlpaca = new Alpaca(
   "My Alpaca",
@@ -56,45 +57,51 @@ function App() {
   };
 
   return (
-    <main className="flex-grow container mx-auto">
+    <main className="block justify-center mx-auto w-full">
       <div className="px-4 py-12">
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-2  xl:grid-cols-4  gap-6 content-center">
           <div>
-            <SelectCategory
-              currentCategory={currentCateogory}
-              setCategory={setCurrentCategory}
-            />
-          </div>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-6">
+              <div>
+                <SelectCategory
+                  currentCategory={currentCateogory}
+                  setCategory={setCurrentCategory}
+                />
+              </div>
 
+              <div>
+                <Selectoption
+                  currentCategory={currentCateogory}
+                  setOption={handleUpdateAlpaca}
+                />
+              </div>
+              <div>
+                <InputName />
+              </div>
+            </div>
+          </div>
           <div>
-            <Selectoption
-              currentCategory={currentCateogory}
-              setOption={handleUpdateAlpaca}
-            />
-          </div>
-
-          <div className="alpaca-container">
-            <DisplayAlpaca alpaca={alpaca} />
-          </div>
-
-          <div>
-            {" "}
-            <IconButton
-              sx={{ m: { xs: 0.5, md: 1 } }}
-              variant="contained"
-              aria-label="Generate Random Alpaca"
-              onClick={randomAlpaca}
-            >
-              <ShuffleOnIcon />
-            </IconButton>
-            <IconButton
-              sx={{ m: { xs: 0.5, md: 1 } }}
-              variant="contained"
-              aria-label="Download Alpaca Image"
-              onClick={downloadAlpaca}
-            >
-              <DownloadIcon />
-            </IconButton>
+            <div className="mx-auto mt-4 p-10 align-center">
+              <div className="alpaca-container">
+                <DisplayAlpaca alpaca={alpaca} />
+              </div>
+              <IconButton
+                sx={{ m: { xs: 0.5, md: 1 } }}
+                variant="contained"
+                aria-label="Generate Random Alpaca"
+                onClick={randomAlpaca}
+              >
+                <ShuffleOnIcon />
+              </IconButton>
+              <IconButton
+                sx={{ m: { xs: 0.5, md: 1 } }}
+                variant="contained"
+                aria-label="Download Alpaca Image"
+                onClick={downloadAlpaca}
+              >
+                <DownloadIcon />
+              </IconButton>
+            </div>
           </div>
         </div>
       </div>
