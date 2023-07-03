@@ -10,8 +10,6 @@ export default function Selectoption({ currentCategory, setOption }) {
   const [currentOption, setCurrentOption] = useState(availableOptions[0].name);
 
   const handleOptionSelect = (option) => {
-    // todo set the value to a state held in App
-    // todo set the name of the option to the current option.
     if (typeof setOption === "function") {
       setOption(option.src);
     }
@@ -33,7 +31,9 @@ export default function Selectoption({ currentCategory, setOption }) {
       </h1>
 
       <Listbox value={currentOption} onChange={handleOptionSelect}>
-        <Listbox.Button>{currentOption ?? "No Option selected"}</Listbox.Button>
+        <Listbox.Button className="shadow-lg rounded-lg uppercase decoration-4 font-semibold">
+          {currentOption ?? "No Option selected"}
+        </Listbox.Button>
 
         <Listbox.Options>
           {availableOptions.map((option, index) => (
