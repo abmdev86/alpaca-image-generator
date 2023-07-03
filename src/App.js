@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 
 import IconButton from "@mui/material/IconButton";
@@ -7,7 +7,7 @@ import ShuffleOnIcon from "@mui/icons-material/ShuffleOn";
 import mergeImages from "merge-images";
 
 import SelectCategory from "./components/SelectCategory";
-import { Toaster } from "react-hot-toast";
+import { Toaster, toast } from "react-hot-toast";
 import Categories from "./data";
 import { getAllCategories, getRandomAlpaca } from "./data/helpers";
 import Selectoption from "./components/SelectOption";
@@ -34,6 +34,7 @@ function App() {
   const [option, setOption] = useState("");
   const [alpaca, setAlpaca] = useState(defaultAlpaca);
 
+  useEffect(() => {}, [option]);
   function randomAlpaca() {
     const randomAlpaca = getRandomAlpaca();
     setAlpaca(randomAlpaca);
